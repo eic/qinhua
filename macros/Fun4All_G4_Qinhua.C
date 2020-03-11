@@ -14,6 +14,7 @@
 #include <phool/recoConsts.h>
 #include <qinhua/CellNtuple.h>
 #include <qinhua/HitNtuple.h>
+
 R__LOAD_LIBRARY(libfun4all.so)
 R__LOAD_LIBRARY(libg4testbench.so)
 R__LOAD_LIBRARY(libg4detectors.so)
@@ -96,15 +97,16 @@ int Fun4All_G4_Qinhua(const int nEvents = 1000, const char *outfile = NULL)
   cellrec->cellsize(0,1.,500.);
   se->registerSubsystem(cellrec);
 
-  HitNtuple *hits = new HitNtuple();
-    hits->AddNode("ZStrip",0);
-    hits->AddNode("PhiStrip",1);
-    se->registerSubsystem(hits);
 
-    CellNtuple *cells = new CellNtuple();
-    cells->AddNode("ZStrip",0);
-cells->AddNode("PhiStrip",1);
-se->registerSubsystem(cells);
+  HitNtuple *hits = new HitNtuple();
+  hits->AddNode("ZStrip",0);
+  hits->AddNode("PhiStrip",1);
+  se->registerSubsystem(hits);
+
+  CellNtuple *cells = new CellNtuple();
+  cells->AddNode("ZStrip",0);
+  cells->AddNode("PhiStrip",1);
+  se->registerSubsystem(cells);
 
   //---------------------------
 
