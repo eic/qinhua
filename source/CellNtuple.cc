@@ -6,7 +6,7 @@
 #include <g4detectors/PHG4CylinderCellGeomContainer.h>
 
 #include <fun4all/Fun4AllHistoManager.h>
-#include <fun4all/SubsysReco.h>                         // for SubsysReco
+#include <fun4all/SubsysReco.h>  // for SubsysReco
 
 #include <phool/getClass.h>
 
@@ -15,10 +15,10 @@
 #include <TNtuple.h>
 
 #include <cassert>
-#include <cmath>                                        // for isfinite
-#include <iostream>                                     // for operator<<
+#include <cmath>     // for isfinite
+#include <iostream>  // for operator<<
 #include <sstream>
-#include <utility>                                      // for pair
+#include <utility>  // for pair
 
 using namespace std;
 
@@ -69,9 +69,9 @@ int CellNtuple::process_event(PHCompositeNode *topNode)
       continue;
     }
     PHG4CellContainer *cells = findNode::getClass<PHG4CellContainer>(topNode, nodename.str());
-    if (! cells)
+    if (!cells)
     {
-      cout << "could not locate " <<  nodename.str() << endl;
+      cout << "could not locate " << nodename.str() << endl;
     }
     if (cells)
     {
@@ -91,15 +91,15 @@ int CellNtuple::process_event(PHCompositeNode *topNode)
           cout << "invalid edep: " << edep << endl;
         }
         esum += cell_iter->second->get_edep();
-	if (! cell_iter->second->has_binning(PHG4CellDefs::sizebinning))
-	{
-	  cout << "this code assumes binning in sizes, invalid binning scheme" << endl;
-	  continue;
-	}
+        if (!cell_iter->second->has_binning(PHG4CellDefs::sizebinning))
+        {
+          cout << "this code assumes binning in sizes, invalid binning scheme" << endl;
+          continue;
+        }
         int zbin = PHG4CellDefs::SizeBinning::get_zbin(cell_iter->second->get_cellid());
 
         int phibin = PHG4CellDefs::SizeBinning::get_phibin(cell_iter->second->get_cellid());
-cell_iter->second->get_zbin();
+        cell_iter->second->get_zbin();
         int layer = cell_iter->second->get_layer();
         // to search the map fewer times, cache the geom object until the layer changes
         if (layer != previouslayer)
@@ -115,14 +115,12 @@ cell_iter->second->get_zbin();
                    phi,
                    z,
                    cell_iter->second->get_edep());
-// looping over G4Hits which contributed to thie cell:
-	// cout << "Associated to "<<hitedeps.size()<<" hits"<<endl;
-	PHG4Cell::EdepConstRange hitpair = cell_iter->second->get_g4hits();
- for (	PHG4Cell::EdepConstIterator hititer = hitpair.first;  hititer != hitpair.second; ++hititer)
- {
-     cout <<"\t PHG4hit "<<hititer->first<<" -> "<<hititer->second<<" GeV"<<endl;
-   }
-
+        // looping over G4Hits which contributed to thie cell:
+        // 	PHG4Cell::EdepConstRange hitpair = cell_iter->second->get_g4hits();
+        // for (	PHG4Cell::EdepConstIterator hititer = hitpair.first;  hititer != hitpair.second; ++hititer)
+        // {
+        //     cout <<"\t PHG4hit "<<hititer->first<<" -> "<<hititer->second<<" GeV"<<endl;
+        //   }
       }
       for (vector<TH1 *>::const_iterator eiter = eloss.begin(); eiter != eloss.end(); ++eiter)
       {

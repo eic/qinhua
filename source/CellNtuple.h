@@ -1,5 +1,5 @@
-#ifndef G4HISTOS_G4CELLNTUPLE_H
-#define G4HISTOS_G4CELLNTUPLE_H
+#ifndef CELLNTUPLE_H
+#define CELLNTUPLE_H
 
 #include <fun4all/SubsysReco.h>
 
