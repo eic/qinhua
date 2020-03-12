@@ -40,7 +40,7 @@ int Fun4All_G4_Qinhua(const int nEvents = 1000, const char *outfile = NULL)
   gen->set_vtx(0, 0, 0);
   gen->set_eta_range(-0.5, +0.5);
   gen->set_mom_range(0.5, 0.5); // GeV/c
-  gen->set_phi_range(0., 90. / 180. * TMath::Pi());  // 0-90 deg
+//  gen->set_phi_range(0., 90. / 180. * TMath::Pi());  // 0-90 deg
   se->registerSubsystem(gen);
 
 
