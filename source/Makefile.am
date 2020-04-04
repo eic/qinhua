@@ -21,10 +21,12 @@ AM_CPPFLAGS = \
 
 pkginclude_HEADERS = \
   CellNtuple.h \
+  HitCombiner.h \
   HitNtuple.h
 
 libqinhuahistos_la_SOURCES = \
   CellNtuple.cc \
+  HitCombiner.cc \
   HitNtuple.cc
 
 ################################################
