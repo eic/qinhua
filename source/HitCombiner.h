@@ -12,7 +12,6 @@ class PHCompositeNode;
 class HitCombiner : public SubsysReco
 {
  public:
-
   HitCombiner(const std::string &name = "HitCombiner");
 
   virtual ~HitCombiner();
@@ -50,13 +49,16 @@ class HitCombiner : public SubsysReco
   void Print(const std::string &what = "ALL") const override;
 
   void SetInputNodes(const std::string &node1, const std::string &node2)
-  {m_InNode1 = "G4HIT_" + node1; m_InNode2 = "G4HIT_" + node2;}
-  void SetOutputNode(const std::string &node) {m_OutNode = "G4HIT_" + node;}
+  {
+    m_InNode1 = "G4HIT_" + node1;
+    m_InNode2 = "G4HIT_" + node2;
+  }
+  void SetOutputNode(const std::string &node) { m_OutNode = "G4HIT_" + node; }
 
  private:
-    std::string m_InNode1;
-    std::string m_InNode2;
-    std::string m_OutNode;
+  std::string m_InNode1;
+  std::string m_InNode2;
+  std::string m_OutNode;
 };
 
-#endif // HITCOMBINER_H
+#endif  // HITCOMBINER_H
